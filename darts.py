@@ -6,9 +6,6 @@
 #__________________________________________________
 # andre.dc@ua.pt                         26/10/2021
 #__________________________________________________
-import math
-import numpy as np
-import matplotlib.pyplot as plt
 
 print("Enter the coordinates in milimeters from the center of the board.")
 x = float(input("x? "))
@@ -19,9 +16,12 @@ y = float(input("y? "))
 POINTS = (20, 1, 18, 4, 13, 6, 10, 15, 2, 17, 3, 19, 7, 16, 8, 11, 14, 9, 12, 5)
 
 # COMPLETE...
+import math
+import numpy as np
+import matplotlib.pyplot as plt
 import matplotlib.patches
 
-def printBoard(x, y, score, points): # (feedback @ orp@ua.pt & jmr@ua.pt)
+def printBoard(x, y, score, points): 
     """
     Desenha o tabuleiro e a posição do dardo
     """
@@ -80,26 +80,16 @@ def printBoard(x, y, score, points): # (feedback @ orp@ua.pt & jmr@ua.pt)
     plt.title("SCORE: {}{}".format(score, "\nOut of bounds!!!" if score == 0 else ""))
     plt.show()
 
-def dartScore(circ_area): # (feedback @ orp@ua.pt & jmr@ua.pt)
+def dartScore(circ_area):
     x = lambda circ_area, bottom_limit, upper_limit : (circ_area > (bottom_limit ** 2) and circ_area <= (upper_limit ** 2))
     score = 50 if x(c_area, 0, 12.5) else 25 if x(c_area, 12.5, 32) else POINTS[m_angle] if x(c_area, 32, 99) else 3*POINTS[m_angle] if x(c_area, 99, 107) else POINTS[m_angle] if x(c_area, 107, 162) else 2*POINTS[m_angle] if x(c_area, 162, 170) else 0
     return score
 
-def recToPolar(x,y): # (feedback @ jmr@ua.pt)
-    # definir vector do ponto à origem
+def recToPolar(x,y):
     p = np.array([x,y])
     norm = np.linalg.norm(p)
-    # normalização do vector do ponto
     p_norm = p / norm
-    """# v = (0,1) >> posso simplificar tudo isto explicitando os valores nas formulas @ jmr@ua.pt
-    # vector normal ao eixo do x para aquisição do ângulo
-    v = np.array([0, 1])
-    # a.b/|a|.|b|    
-    v2 = (v[0] * p_norm[0] + v[1] * p_norm[1]) / math.sqrt(v[0]**2 + v[1]**2) * math.sqrt(p_norm[0]**2 + p_norm[1]**2) 
-    """
     vector = (p_norm[1]) 
-    """ / math.sqrt(p_norm[0]**2 + p_norm[1]**2) #>> == 1 @ jmr@ua.pt"""
-    # cos(a) = a.b/|a|.|b|
     angle = math.acos(vector) * 180 / math.pi
     return vector, angle
 
@@ -109,7 +99,7 @@ vec, ang = recToPolar(x, y)
 m_angle = int((ang + 9) / 18)     
 # neste caso o programa é agnóstico para angulos superiores a 180º é preciso diferenciar os quadrantes.
 m_angle = -m_angle if x <= 0 else m_angle
-# area correspondente à circunferência ou anel (feedback @ jmr@ua.pt)
+# area correspondente à circunferência ou anel
 c_area = (x ** 2 + y ** 2)     
 score = dartScore(c_area)
 
