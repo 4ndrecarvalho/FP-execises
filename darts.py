@@ -3,9 +3,6 @@
 # See:
 #   https://en.wikipedia.org/wiki/Darts#Dartboard
 #   https://www.dimensions.com/element/dartboard
-#__________________________________________________
-# andre.dc@ua.pt                         26/10/2021
-#__________________________________________________
 
 print("Enter the coordinates in milimeters from the center of the board.")
 x = float(input("x? "))
@@ -16,6 +13,9 @@ y = float(input("y? "))
 POINTS = (20, 1, 18, 4, 13, 6, 10, 15, 2, 17, 3, 19, 7, 16, 8, 11, 14, 9, 12, 5)
 
 # COMPLETE...
+#__________________________________________________
+# andre.dc@ua.pt                         26/10/2021
+#__________________________________________________
 import math
 import numpy as np
 import matplotlib.pyplot as plt
@@ -93,15 +93,19 @@ def recToPolar(x,y):
     angle = math.acos(vector) * 180 / math.pi
     return vector, angle
 
-# Cálculos inerentes à posição do dardo
-vec, ang = recToPolar(x, y)
-# cada triangulo tem uma variação de 18º, esta variável serve para definir qual o indice de POINTS a usar.
-m_angle = int((ang + 9) / 18)     
-# neste caso o programa é agnóstico para angulos superiores a 180º é preciso diferenciar os quadrantes.
-m_angle = -m_angle if x <= 0 else m_angle
-# area correspondente à circunferência ou anel
-c_area = (x ** 2 + y ** 2)     
-score = dartScore(c_area)
+def main():
+    # Cálculos inerentes à posição do dardo
+    vec, ang = recToPolar(x, y)
+    # cada triangulo tem uma variação de 18º, esta variável serve para definir qual o indice de POINTS a usar.
+    m_angle = int((ang + 9) / 18)     
+    # neste caso o programa é agnóstico para angulos superiores a 180º é preciso diferenciar os quadrantes.
+    m_angle = -m_angle if x <= 0 else m_angle
+    # area correspondente à circunferência ou anel
+    c_area = (x ** 2 + y ** 2)     
+    score = dartScore(c_area)
 
-print("SCORE: {}{}".format(score, "\nOut of bounds!!!" if score == 0 else ""))
-printBoard(x, y, score, POINTS)
+    print("SCORE: {}{}".format(score, "\nOut of bounds!!!" if score == 0 else ""))
+    printBoard(x, y, score, POINTS)
+
+if __name__ == "__main__":
+    main()
