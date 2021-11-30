@@ -1,3 +1,6 @@
+#__________________________________________________
+# andre.dc@ua.pt                         30/11/2021
+#__________________________________________________
 def insertTeams():
     teams = []
     team = input("Insira as equipas, Para terminar a inserção prima <enter>\nInsira equipa: ")
