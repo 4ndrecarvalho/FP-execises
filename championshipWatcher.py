@@ -74,13 +74,11 @@ def printResults(teamresults):
         print("{:^10s} {:^10d} {:^10d} {:^10d} {:^15d} {:^15d} {:^10d}".format(k[0], k[1][0], k[1][1], k[1][2], k[1][3], k[1][4], k[1][5]))
     print("\n ________________________\n/ {:^22s} \ \n\ is the new champion!!! /\n  ----------------------\n   \ \n    \ \n        .--.\n       |o_o |\n       |:_/ |\n      //   \ \ \n     (|     | )\n    /'\_   _/`\ \n    \___)=(___/\n".format(champion))
 
-
 def main():
     teams = insertTeams()
     matches = allMatches(teams)
     matchresults, teamresults = results(matches)
     printResults(teamresults)
     
-
 if __name__ == "__main__":
     main()
