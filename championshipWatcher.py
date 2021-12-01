@@ -1,12 +1,10 @@
-#__________________________________________________
-# andre.dc@ua.pt                         30/11/2021
-#__________________________________________________
 def insertTeams():
     teams = []
-    team = input("Insira as equipas, Para terminar a inserção prima <enter>\nInsira equipa: ")
+
+    team = input("Please insert teams, to terminate the insertion process press <enter>\nInsert team: ")
     teams.append(team)
     while True:
-        team = input("Insira equipa: ")
+        team = input("Insert team: ")
         if team == "":
             break
         teams.append(team)
@@ -67,12 +65,13 @@ def results(matches):
     return matchResults, teamResults
 
 def printResults(teamresults):
-    print("\n{:^20s} {:^10s} {:^10s} {:^10s} {:^15s} {:^15s} {:^10s}".format("Equipa", "vitorias", "empates", "derrotas", "golos marcados", "golos sofridos", "pontos"))
+    print("\n{:^20s} {:^10s} {:^10s} {:^10s} {:^15s} {:^15s} {:^10s}".format("Team", "Victories", "Draws", "Losses", "Goals scored", "Goals conceded", "Points"))
     for i, k in enumerate(sorted(teamresults.items(), key=lambda item: item[1], reverse=True)):
         if i == 0:
             champion = k[0]
         print("{:^20s} {:^10d} {:^10d} {:^10d} {:^15d} {:^15d} {:^10d}".format(k[0], k[1][0], k[1][1], k[1][2], k[1][3], k[1][4], k[1][5]))
     print("\n ________________________\n/ {:^22s} \ \n\ is the new champion!!! /\n  ----------------------\n   \ \n    \ \n        .--.\n       |o_o |\n       |:_/ |\n      //   \ \ \n     (|     | )\n    /'\_   _/`\ \n    \___)=(___/\n".format(champion))
+
 
 def main():
     teams = insertTeams()
@@ -80,5 +79,6 @@ def main():
     matchresults, teamresults = results(matches)
     printResults(teamresults)
     
+
 if __name__ == "__main__":
     main()
