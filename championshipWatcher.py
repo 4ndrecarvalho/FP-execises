@@ -67,11 +67,11 @@ def results(matches):
     return matchResults, teamResults
 
 def printResults(teamresults):
-    print("\n{:^10s} {:^10s} {:^10s} {:^10s} {:^15s} {:^15s} {:^10s}".format("Equipa", "vitorias", "empates", "derrotas", "golos marcados", "golos sofridos", "pontos"))
+    print("\n{:^20s} {:^10s} {:^10s} {:^10s} {:^15s} {:^15s} {:^10s}".format("Equipa", "vitorias", "empates", "derrotas", "golos marcados", "golos sofridos", "pontos"))
     for i, k in enumerate(sorted(teamresults.items(), key=lambda item: item[1], reverse=True)):
         if i == 0:
             champion = k[0]
-        print("{:^10s} {:^10d} {:^10d} {:^10d} {:^15d} {:^15d} {:^10d}".format(k[0], k[1][0], k[1][1], k[1][2], k[1][3], k[1][4], k[1][5]))
+        print("{:^20s} {:^10d} {:^10d} {:^10d} {:^15d} {:^15d} {:^10d}".format(k[0], k[1][0], k[1][1], k[1][2], k[1][3], k[1][4], k[1][5]))
     print("\n ________________________\n/ {:^22s} \ \n\ is the new champion!!! /\n  ----------------------\n   \ \n    \ \n        .--.\n       |o_o |\n       |:_/ |\n      //   \ \ \n     (|     | )\n    /'\_   _/`\ \n    \___)=(___/\n".format(champion))
 
 def main():
