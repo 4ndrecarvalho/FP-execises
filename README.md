@@ -8,4 +8,4 @@ darts.py
 
 championshipWatcher.py
 
-![image](https://user-images.githubusercontent.com/42943782/144147837-eacb0bab-3cad-4d85-9920-7c4deeb754e9.png)
+![image](https://user-images.githubusercontent.com/42943782/144148703-1e378fa0-96ad-4456-9a09-437f63f0c8d9.png)
